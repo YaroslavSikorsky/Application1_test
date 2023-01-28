@@ -13,24 +13,26 @@ public class TaskManager {
 
 	}
 
+
 	public void saveTask(Task task) {
 
 		taskStorage.saveTask(task);
 		System.out.println(task.getState());
 
-		//вычисление пока тут
-		Service service = new Service(task);
-		service.calculate();
-		task.setState(TaskState.DONE);
-		service.sss(task);
+//		//вычисление пока тут
+//		Service service = new Service(task);
+//		service.calculate();
+//		task.setState(TaskState.DONE);
+//		service.sss(task);
+
 
 	}
 
-	public List<Task> getTaskById(String id) {
-
-		return taskStorage.findTaskById(id);
-
-	}
+//	public int getTaskById(String id) {
+//
+//		return (int) taskStorage.findTaskById(id);
+//
+//	}
 
 
 }

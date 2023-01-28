@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.UUID;
-
 public class Main {
 
 	public static void main(String[] args) {
@@ -11,7 +9,7 @@ public class Main {
 		Receiver receiver = new Receiver(taskManager);
 		Sender sender = new Sender(receiver);
 
-		sender.goRequestNewTask(99999999);
-		sender.goRequestEndTask(UUID.randomUUID().toString());
+		sender.requestTask();
+		//sender.requestResolve(UUID.randomUUID().toString()); //на что рассчитывал? этот генератор никогда не пересечется с генератором в таске
 	}
 }

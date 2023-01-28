@@ -2,7 +2,6 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TaskStorage {
 
@@ -14,12 +13,13 @@ public class TaskStorage {
 
 	}
 
-	public List<Task> findTaskById(String id) {
-
-		return tasks.stream()
-				.filter(s -> s.getId().equals(id))
-				.collect(Collectors.toList());
-
-	}
+//	public double findTaskById(String id) {
+//
+//		return tasks.stream()
+//				.filter(s -> s.getId().equals(id))
+//				.filter(s -> s.getState() == TaskState.DONE)
+//				.mapToInt(Task::getEndData).average().getAsDouble();
+//
+//	}
 
 }

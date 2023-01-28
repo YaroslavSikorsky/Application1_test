@@ -10,24 +10,25 @@ public class Receiver {
 
 	}
 
+	//сохраняет и возвращает уникальный идентификатор
 	public String handleRequest(Request request) {
 
-		Task task = new Task(request.getTaskData());
-		System.out.println(task.getData());
+		Task task = new Task(request.getNumber()); //где то тут потом попросить посчитать resolve?
+		System.out.println(task.getNumber());
 		taskManager.saveTask(task);
-		request.setIdTask(task.getId());
-		Response response = new Response(request.getIdTask());
+		Response response = new Response(task.getId());
+		System.out.println(response.getIdTask());
 		return response.getIdTask();
 
 	}
 
-	public int handleRequestEndTask(Request request) {
-
-		taskManager.getTaskById(request.getIdTask()); // это надо передавать в response? это значение не используется, зачем я искал таски..тут проверка статуса?
-		Response response = new Response(request.getIdTask());
-		return response.getEndData();
-
-	}
+//	public int handleRequestEndTask(Request request) {
+//
+//		Response response = new Response(request.getIdTask());
+//		response.setTaskEndData(taskManager.getTaskById(request.getIdTask()));
+//		return response.getTaskEndData();
+//
+//	}
 
 
 }

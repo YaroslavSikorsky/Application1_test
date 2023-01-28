@@ -2,35 +2,31 @@ package com.company;
 
 public class Service {
 
-	public int taskData;
-	public int taskEndData;
+	public int number;
+	public int resolve;
 	public TaskState taskState;
 
-	public Service(Task task) {
-		this.taskData = task.getData();
-		this.taskState = task.getState();
-	}
-
-	public int calculate() {
-		int count = 0;
-		for (int i = taskData; i >= 1; i--) {
-			if (taskData % i == 0) {
-				count++;
-			}
-		}
-		taskEndData = count;
-		System.out.println(count);
-
-		return taskEndData;
-
-	}
-
-	public void sss(Task task) {
-		if (task.getState() == TaskState.DONE) {
-			this.taskState = TaskState.DONE;
-			System.out.println(taskState);
-		}
-
-	}
+//	public Service(Task task) {
+//		this.number = task.getNumber();
+//		this.taskState = task.getState();
+//	}
+//
+//	public int calculate() {
+//		int count = 0;
+//		for (int i = 1; i <= number; i++) {
+//			if (number % i == 0) {
+//				count++;
+//			}
+//		}
+//		resolve = count;
+//		return resolve;
+//	}
+//
+//	public void sss(Task task) {
+//		if (task.getState() == TaskState.DONE) {
+//			this.taskState = TaskState.DONE;
+//			System.out.println(taskState);
+//		}
+//	}
 
 }

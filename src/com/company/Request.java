@@ -4,18 +4,17 @@ package com.company;
 public class Request {
 
 	public String idTask;
-	public int taskData;
+	public int number;
 
-	public Request(String id) {
+//	public Request(String id) {
+//
+//		this.idTask = id;
+//
+//	}
 
-		this.idTask = id;
+	public Request(int number) {
 
-
-	}
-
-	public Request(int taskData) {
-
-		this.taskData = taskData;
+		this.number = number;
 
 	}
 
@@ -32,9 +31,9 @@ public class Request {
 	}
 
 
-	public int getTaskData() {
+	public int getNumber() {
 
-		return taskData;
+		return number;
 
 	}
 

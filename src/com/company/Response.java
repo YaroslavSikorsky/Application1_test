@@ -4,8 +4,7 @@ package com.company;
 public class Response {
 
 	public String idTask;
-	public TaskState taskState; // надо ли
-	public int endData;
+	public int resolve;
 
 
 	public Response(String id) {
@@ -20,10 +19,21 @@ public class Response {
 
 	}
 
-	public int getEndData() {
-
-		return endData;
-
-	}
-	
+//	public void setIdTask(String idTask) {
+//
+//		this.idTask = idTask;
+//
+//	}
+//
+//	public int getResolve() {
+//
+//		return resolve;
+//
+//	}
+//
+//	public void setResolve(int resolve) {
+//
+//		this.resolve = resolve;
+//
+//	}
 }

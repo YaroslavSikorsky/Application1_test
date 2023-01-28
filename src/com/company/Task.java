@@ -4,29 +4,29 @@ import java.util.UUID;
 
 public class Task {
 
-	public int data;
+	public int number;
 	public TaskState state;
 	public String id;
-	public int endData;
+	public int resolve;
 
-	public Task(int data) {
-		this.data = data;
+	public Task(int number) {
+		this.number = number;
 		this.id = UUID.randomUUID().toString();
 		this.state = TaskState.ACTIVATE;
-
 	}
+
 
 	public TaskState getState() {
 
 		return state;
 
 	}
-
-	public void setState(TaskState state) {
-
-		this.state = state;
-
-	}
+//
+//	public void setState(TaskState state) {
+//
+//		this.state = state;
+//
+//	}
 
 	public String getId() {
 
@@ -34,8 +34,19 @@ public class Task {
 
 	}
 
-	public int getData() {
-		return data;
+	public int getNumber() {
+
+		return number;
+
 	}
+
+//	public int getResolve() {
+//		return resolve;
+//	}
+//
+//	public void setResolve(int endData) {
+//		this.resolve = endData;
+//	}
+
 
 }

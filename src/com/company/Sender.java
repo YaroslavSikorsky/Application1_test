@@ -1,8 +1,11 @@
 package com.company;
 
+import java.util.Random;
+
 public class Sender {
 
 	public Receiver receiver;
+
 
 	public Sender(Receiver receiver) {
 
@@ -10,19 +13,27 @@ public class Sender {
 
 	}
 
-	public void goRequestNewTask(int data) {
+	//придумывает рандомное число и посылает запрос на подсчет, //получает айди задачи
+	public void requestTask() {
 
-		Request request = new Request(data);
+		Request request = new Request(generateNumber());
 		receiver.handleRequest(request);
 
 	}
 
-	public void goRequestEndTask(String id) {
+	public int generateNumber() {
 
-		Request request = new Request(id);
-		receiver.handleRequestEndTask(request);
+		Random random = new Random();
+		return random.nextInt(999999);
 
 	}
+
+//	public void requestEndTask(String id) {
+//
+//		Request request = new Request(id);
+//		receiver.handleRequestEndTask(request);
+//
+//	}
 
 
 }
