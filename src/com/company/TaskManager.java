@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.List;
-
 
 public class TaskManager {
 
@@ -17,22 +15,19 @@ public class TaskManager {
 	public void saveTask(Task task) {
 
 		taskStorage.saveTask(task);
-		System.out.println(task.getState());
 
-//		//вычисление пока тут
-//		Service service = new Service(task);
-//		service.calculate();
-//		task.setState(TaskState.DONE);
-//		service.sss(task);
-
+		//вычисление пока тут
+		Service service = new Service(task);
+		task.setResolve(service.calculate());
+		task.setState(TaskState.DONE);
 
 	}
 
-//	public int getTaskById(String id) {
-//
-//		return (int) taskStorage.findTaskById(id);
-//
-//	}
 
+	public int getTask() {
+
+		return (int) taskStorage.findTask();
+
+	}
 
 }

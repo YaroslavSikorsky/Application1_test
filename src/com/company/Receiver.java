@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.List;
+
 public class Receiver {
 
 	private final TaskManager taskManager;
@@ -15,20 +17,23 @@ public class Receiver {
 
 		Task task = new Task(request.getNumber()); //где то тут потом попросить посчитать resolve?
 		System.out.println(task.getNumber());
+		System.out.println(task.getState());
 		taskManager.saveTask(task);
+		System.out.println(task.getState());
 		Response response = new Response(task.getId());
-		System.out.println(response.getIdTask());
 		return response.getIdTask();
 
 	}
 
-//	public int handleRequestEndTask(Request request) {
-//
-//		Response response = new Response(request.getIdTask());
-//		response.setTaskEndData(taskManager.getTaskById(request.getIdTask()));
-//		return response.getTaskEndData();
-//
-//	}
+	//потом добавить использование АЙДИ
+	public int handleRequestResolve(Request request) {
+
+		Response response = new Response();
+		response.setResolve(taskManager.getTask());
+		System.out.println(response.getResolve());
+		return response.getResolve();
+
+	}
 
 
 }

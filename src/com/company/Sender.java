@@ -24,16 +24,16 @@ public class Sender {
 	public int generateNumber() {
 
 		Random random = new Random();
-		return random.nextInt(999999);
+		return random.nextInt(9999999); //добавить потом пару 9
 
 	}
 
-//	public void requestEndTask(String id) {
-//
-//		Request request = new Request(id);
-//		receiver.handleRequestEndTask(request);
-//
-//	}
+	public void requestResolve() {
+
+		Request request = new Request();
+		receiver.handleRequestResolve(request);
+
+	}
 
 
 }

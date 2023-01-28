@@ -21,12 +21,12 @@ public class Task {
 		return state;
 
 	}
-//
-//	public void setState(TaskState state) {
-//
-//		this.state = state;
-//
-//	}
+
+	public void setState(TaskState state) {
+
+		this.state = state;
+
+	}
 
 	public String getId() {
 
@@ -40,13 +40,13 @@ public class Task {
 
 	}
 
-//	public int getResolve() {
-//		return resolve;
-//	}
-//
-//	public void setResolve(int endData) {
-//		this.resolve = endData;
-//	}
+	public int getResolve() {
+		return resolve;
+	}
+
+	public void setResolve(int endData) {
+		this.resolve = endData;
+	}
 
 
 }

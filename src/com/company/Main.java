@@ -10,6 +10,6 @@ public class Main {
 		Sender sender = new Sender(receiver);
 
 		sender.requestTask();
-		//sender.requestResolve(UUID.randomUUID().toString()); //на что рассчитывал? этот генератор никогда не пересечется с генератором в таске
+		sender.requestResolve(); //мы хотим получить по АЙДИ ответ, но как передавать айди я хз, поэтому пока просто список готовых тасков
 	}
 }

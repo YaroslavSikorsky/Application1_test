@@ -13,13 +13,14 @@ public class TaskStorage {
 
 	}
 
-//	public double findTaskById(String id) {
-//
-//		return tasks.stream()
-//				.filter(s -> s.getId().equals(id))
-//				.filter(s -> s.getState() == TaskState.DONE)
-//				.mapToInt(Task::getEndData).average().getAsDouble();
-//
-//	}
+	public double findTask() {
+
+		return tasks.stream()
+				//.filter(s -> s.getId().equals(id)) //потом использовать когда будет айди
+				.filter(s -> s.getState() == TaskState.DONE)
+				.mapToInt(Task::getResolve).average().getAsDouble();
+
+	}
+
 
 }
