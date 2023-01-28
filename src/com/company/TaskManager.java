@@ -11,15 +11,9 @@ public class TaskManager {
 
 	}
 
-
 	public void saveTask(Task task) {
 
 		taskStorage.saveTask(task);
-
-		//вычисление пока тут
-		Service service = new Service(task);
-		task.setResolve(service.calculate());
-		task.setState(TaskState.DONE);
 
 	}
 

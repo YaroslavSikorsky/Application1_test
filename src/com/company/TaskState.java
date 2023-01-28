@@ -2,7 +2,7 @@ package com.company;
 
 public enum TaskState {
 
-	ACTIVATE,
+	INWORK,
 	DONE;
 
 }

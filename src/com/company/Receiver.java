@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.List;
-
 public class Receiver {
 
 	private final TaskManager taskManager;
@@ -12,20 +10,20 @@ public class Receiver {
 
 	}
 
-	//сохраняет и возвращает уникальный идентификатор
 	public String handleRequest(Request request) {
 
-		Task task = new Task(request.getNumber()); //где то тут потом попросить посчитать resolve?
+		Task task = new Task(request.getNumber());
 		System.out.println(task.getNumber());
 		System.out.println(task.getState());
 		taskManager.saveTask(task);
+		TaskProcessor taskProcessor = new TaskProcessor(task);
+		taskProcessor.processingTask();
 		System.out.println(task.getState());
 		Response response = new Response(task.getId());
 		return response.getIdTask();
 
 	}
 
-	//потом добавить использование АЙДИ
 	public int handleRequestResolve(Request request) {
 
 		Response response = new Response();
