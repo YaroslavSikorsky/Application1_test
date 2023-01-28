@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.Random;
-
 public class Sender {
 
 	public Receiver receiver;
@@ -13,22 +11,16 @@ public class Sender {
 
 	}
 
-	//придумывает рандомное число и посылает запрос на подсчет, //получает айди задачи
-	public void requestTask() {
+	public void sendRequestTask() {
 
-		Request request = new Request(generateNumber());
+		NumbersGenerator numbersGenerator = new NumbersGenerator();
+		Request request = new Request(numbersGenerator.generateNumber());
 		receiver.handleRequest(request);
 
 	}
 
-	public int generateNumber() {
 
-		Random random = new Random();
-		return random.nextInt(9999999); //добавить потом пару 9
-
-	}
-
-	public void requestResolve() {
+	public void sendRequestResolve() {
 
 		Request request = new Request();
 		receiver.handleRequestResolve(request);
