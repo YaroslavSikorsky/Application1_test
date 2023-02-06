@@ -1,21 +1,40 @@
 package com.company;
 
-public class TaskProcessor {
 
-	public Task task;
+public class TaskProcessor extends Thread {
 
-	public TaskProcessor(Task task) {
-
-		this.task = task;
-
-	}
-
-	public void processingTask() {
+	public void processingTask(Task task) {
 
 		task.setState(TaskState.INWORK);
-		Service service = new Service(task);
-		task.setResolve(service.calculate());
+		Service service = new Service();
+		task.setAnswer(service.calculate(task.getNumber()));
 		task.setState(TaskState.DONE);
 
+
 	}
+
+//		Thread run = new Thread(new Runnable() {
+//
+//			@Override
+//			public void run() throws NoSuchElementException {
+//				while (true) {
+//					try {
+//
+//						task.setState(TaskState.INWORK);
+//						Service service = new Service();
+//						task.setAnswer(service.calculate(task.getNumber()));
+//						task.setState(TaskState.DONE);
+//
+//						Thread.sleep(1000); //1000 - 1 сек
+//					} catch (InterruptedException ex) {
+//					}
+//				}
+//			}
+//		});
+//		run.start(); // заводим
+//	}
+
 }
+
+
+
