@@ -7,31 +7,25 @@ public class Task {
 	public int number;
 	public TaskState state;
 	public String id;
-	public int resolve;
+	public int answer;
 
 	public Task(int number) {
 		this.number = number;
 		this.id = UUID.randomUUID().toString();
-		this.state = TaskState.ACTIVATE;
+		this.state = TaskState.CREATED;
 	}
 
-
 	public TaskState getState() {
-
 		return state;
-
 	}
 
 	public void setState(TaskState state) {
-
 		this.state = state;
-
 	}
 
+
 	public String getId() {
-
 		return this.id;
-
 	}
 
 	public int getNumber() {
@@ -40,12 +34,16 @@ public class Task {
 
 	}
 
-	public int getResolve() {
-		return resolve;
+	public int getAnswer() {
+
+		return answer;
+
 	}
 
-	public void setResolve(int endData) {
-		this.resolve = endData;
+	public void setAnswer(int answer) {
+
+		this.answer = answer;
+
 	}
 
 

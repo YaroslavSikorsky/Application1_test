@@ -1,8 +1,7 @@
 package com.company;
 
 public enum TaskState {
-
-	INWORK,
+	CREATED,
+	IN_PROGRESS,
 	DONE;
-
 }

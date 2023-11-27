@@ -17,11 +17,4 @@ public class TaskManager {
 
 	}
 
-
-	public int getTask() {
-
-		return (int) taskStorage.findTask();
-
-	}
-
 }

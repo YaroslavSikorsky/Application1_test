@@ -4,9 +4,10 @@ import java.util.Random;
 
 public class NumbersGenerator {
 
-		public int generateNumber() {
+	Random random = new Random();
 
-		Random random = new Random();
+	public int generateNumber() {
+
 		return random.nextInt(999999999);
 
 	}
