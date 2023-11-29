@@ -2,6 +2,8 @@ package com.company;
 
 import java.util.List;
 
+import company33.TaskStorage;
+
 public class TaskService {
 
 	private TaskStorage taskStorage;

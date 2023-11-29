@@ -1,6 +1,8 @@
 package com.company;
 
 
+import company33.TaskStorage;
+
 public class Main {
 
 	public static void main(String[] args) {

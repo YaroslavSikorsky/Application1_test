@@ -1,4 +1,7 @@
-package com.company;
+package company33;
+
+import com.company.Task;
+import com.company.TaskState;
 
 import java.util.ArrayList;
 import java.util.List;

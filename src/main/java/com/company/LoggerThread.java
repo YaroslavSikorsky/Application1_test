@@ -1,4 +1,5 @@
 package com.company;
+import company33.TaskStorage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.logging.*;
 public class LoggerThread extends Thread {
 	private TaskService taskService;
 	private static final Logger logger = Logger.getLogger(LoggerThread.class.getName());
-	private static Map<String, String> taskStateMap = new HashMap<>();
+	private static Map<String, String> taskStateMap = new HashMap<String, String>();
 
 	public LoggerThread(TaskService taskService) {
 		this.taskService = taskService;
