@@ -9,7 +9,7 @@ import java.util.logging.*;
 public class LoggerThread extends Thread {
 	private TaskService taskService;
 	private static final Logger logger = Logger.getLogger(LoggerThread.class.getName());
-	private static Map<String, String> taskStateMap = new HashMap<String, String>();
+	private static Map<String, String> taskStateMap = new HashMap<>();
 
 	public LoggerThread(TaskService taskService) {
 		this.taskService = taskService;

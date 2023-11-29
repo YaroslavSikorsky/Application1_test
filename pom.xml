@@ -26,7 +26,6 @@
 
     <modules>
         <module>Storage2</module>
-<!--        <module>Storage</module>-->
     </modules>
 
 
