@@ -1,8 +1,8 @@
-package com.company;
+package org.ysikorsky.processor;
 
 import java.util.List;
 
-import company33.TaskStorage;
+import org.ysikorsky.storage.TaskStorage;
 
 public class TaskService {
 
@@ -25,6 +25,7 @@ public class TaskService {
 			int calculate = calculate(number);
 			firstCreatedTask.setAnswer(calculate);
 			firstCreatedTask.setState(TaskState.DONE);
+			//firstCreatedTask.setdateTimeDone(new Date())
 		}
 	}
 

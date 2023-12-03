@@ -1,5 +1,6 @@
-package com.company;
+package org.ysikorsky.processor;
 
+import java.util.Date;
 import java.util.UUID;
 
 public class Task {
@@ -9,10 +10,14 @@ public class Task {
 	public String id;
 	public int answer;
 
+	public Date	dateTimeCreated;
+	public Date	dateTimeDone;
+
 	public Task(int number) {
 		this.number = number;
 		this.id = UUID.randomUUID().toString();
 		this.state = TaskState.CREATED;
+		//this.dateTimeCreated(new Date())
 	}
 
 	public TaskState getState() {

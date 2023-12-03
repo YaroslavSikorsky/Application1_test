@@ -1,7 +1,7 @@
-package com.company;
+package org.ysikorsky.processor;
 
 
-import company33.TaskStorage;
+import org.ysikorsky.storage.TaskStorage;
 
 public class Main {
 
@@ -21,8 +21,10 @@ public class Main {
 		sender.sendRequestTask();
 		sender.sendRequestTask();
 		sender.sendRequestTask();
+
 		taskProcessor.start();
 		taskProcessor2.start();
+
 
 	}
 }

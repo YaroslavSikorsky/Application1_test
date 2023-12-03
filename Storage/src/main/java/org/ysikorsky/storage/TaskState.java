@@ -1,4 +1,4 @@
-package com.company;
+package org.ysikorsky.storage;
 
 public enum TaskState {
 	CREATED,

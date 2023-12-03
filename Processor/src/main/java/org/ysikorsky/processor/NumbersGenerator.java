@@ -1,4 +1,4 @@
-package com.company;
+package org.ysikorsky.processor;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package com.company;
+package org.ysikorsky.processor;
 
 public class TaskProcessor extends Thread {
 

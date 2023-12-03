@@ -1,7 +1,7 @@
-package com.company;
+package org.ysikorsky.processor;
 
 
-import company33.TaskStorage;
+import org.ysikorsky.storage.TaskStorage;
 
 public class TaskManager {
 
