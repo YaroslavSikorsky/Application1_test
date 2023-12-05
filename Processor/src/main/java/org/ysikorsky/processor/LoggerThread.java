@@ -14,13 +14,15 @@ public class LoggerThread extends Thread {
 		this.taskService = taskService;
 	}
 
+
 	@Override
 	public void run() {
 		while (true) {
 			try {
+				// 	TODO исправить синхронизацию
 				synchronized (taskStateMap) {
-					List<Task> tasks = taskService.getAllTasks();
-					for (Task task : tasks) {
+					List<ProcessorTask> tasks = taskService.getAllTasks();
+					for (ProcessorTask task : tasks) {
 						String taskId = task.getId();
 						String taskState = task.getState().toString();
 						String previousState = taskStateMap.get(taskId);

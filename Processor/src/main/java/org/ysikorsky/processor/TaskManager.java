@@ -13,10 +13,10 @@ public class TaskManager {
 
 	}
 
+	// TODO добавить конвертацию
+	public void saveTask(ProcessorTask task) {
 
-	public void saveTask(Task task) {
-
-		taskStorage.saveTask(task);
+		taskStorage.saveTask(TaskConverter.convertToStorageTask(task));
 
 	}
 

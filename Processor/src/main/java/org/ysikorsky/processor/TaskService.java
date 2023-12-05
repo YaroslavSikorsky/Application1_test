@@ -1,8 +1,9 @@
 package org.ysikorsky.processor;
 
+import org.ysikorsky.storage.TaskStorage;
+
 import java.util.List;
 
-import org.ysikorsky.storage.TaskStorage;
 
 public class TaskService {
 
@@ -12,20 +13,26 @@ public class TaskService {
 		this.taskStorage = taskStorage;
 	}
 
-	public List<Task> getAllTasks() {
-		return taskStorage.allTasks();
+	// TODO добавить конвертацию
+	public List<ProcessorTask> getAllTasks() {
+		List<ProcessorTask> processorTaskList = taskStorage.allTasks().stream()
+				.map(s -> TaskConverter.convertToProcessorTask(s))
+				.toList();
+		return processorTaskList;
 	}
 
+	// TODO добавить конвертацию
 	public void accomplishTask() {
-
-		Task firstCreatedTask = taskStorage.findFirstCreated();
-		if (firstCreatedTask != null) {
-			int number = firstCreatedTask.getNumber();
-			firstCreatedTask.setState(TaskState.IN_PROGRESS);
-			int calculate = calculate(number);
-			firstCreatedTask.setAnswer(calculate);
-			firstCreatedTask.setState(TaskState.DONE);
-			//firstCreatedTask.setdateTimeDone(new Date())
+		synchronized (taskStorage) {
+			ProcessorTask firstCreatedTask = TaskConverter.convertToProcessorTask(taskStorage.findFirstCreated());
+			if (firstCreatedTask != null) {
+				int number = firstCreatedTask.getNumber();
+				firstCreatedTask.setState(ProcessorTaskState.IN_PROGRESS);
+				int calculate = calculate(number);
+				firstCreatedTask.setAnswer(calculate);
+				firstCreatedTask.setState(ProcessorTaskState.DONE);
+				//firstCreatedTask.setdateTimeDone(new Date())
+			}
 		}
 	}
 

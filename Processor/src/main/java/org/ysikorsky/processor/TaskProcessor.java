@@ -10,6 +10,7 @@ public class TaskProcessor extends Thread {
 		loggerThread = new LoggerThread(taskService);
 	}
 
+	// TODO добавить синхронизацию
 	@Override
 	public void run() {
 		while (true) {

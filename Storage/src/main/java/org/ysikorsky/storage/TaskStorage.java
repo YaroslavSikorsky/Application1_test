@@ -6,20 +6,20 @@ import java.util.Optional;
 
 public class TaskStorage {
 
-	public List<Task> tasks = new ArrayList<>();
+	public List<StorageTask> tasks = new ArrayList<>();
 
-	public void saveTask(Task task) {
+	public void saveTask(StorageTask task) {
 		tasks.add(task);
 	}
 
-	public List<Task> allTasks() {
+	public List<StorageTask> allTasks() {
 		return tasks.stream()
 				.toList();
 	}
 
-	public Task findFirstCreated() {
-		Optional<Task> firstInProgressTask = tasks.stream()
-				.filter(task -> task.getState() == TaskState.CREATED)
+	public StorageTask findFirstCreated() {
+		Optional<StorageTask> firstInProgressTask = tasks.stream()
+				.filter(task -> task.getState() == StorageTaskState.CREATED)
 				.findFirst();
 		return firstInProgressTask.orElse(null);
 	}

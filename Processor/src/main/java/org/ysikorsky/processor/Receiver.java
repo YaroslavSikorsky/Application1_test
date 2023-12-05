@@ -12,7 +12,7 @@ public class Receiver {
 
 	public Response handleRequest(Request request) {
 
-		Task task = new Task(request.getNumber());
+		ProcessorTask task = new ProcessorTask(request.getNumber());
 		taskManager.saveTask(task);
 		Response response = new Response(task.getId());
 		return response;

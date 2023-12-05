@@ -1,6 +1,6 @@
 package org.ysikorsky.processor;
 
-public enum TaskState {
+public enum ProcessorTaskState {
 	CREATED,
 	IN_PROGRESS,
 	DONE;
