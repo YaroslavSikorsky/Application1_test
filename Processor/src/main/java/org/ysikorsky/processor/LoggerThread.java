@@ -6,20 +6,18 @@ import java.util.Map;
 import java.util.logging.*;
 
 public class LoggerThread extends Thread {
-	private TaskService taskService;
+	private final TaskService taskService;
 	private static final Logger logger = Logger.getLogger(LoggerThread.class.getName());
-	private static Map<String, String> taskStateMap = new HashMap<>();
+	private static final Map<String, String> taskStateMap = new HashMap<>();
 
 	public LoggerThread(TaskService taskService) {
 		this.taskService = taskService;
 	}
 
-
 	@Override
 	public void run() {
 		while (true) {
 			try {
-				// 	TODO исправить синхронизацию
 				synchronized (taskStateMap) {
 					List<ProcessorTask> tasks = taskService.getAllTasks();
 					for (ProcessorTask task : tasks) {
@@ -34,7 +32,7 @@ public class LoggerThread extends Thread {
 				}
 				Thread.sleep(500);
 			} catch (InterruptedException ex) {
-
+				System.out.println("InterruptedException!!!!!!!");
 			}
 		}
 	}

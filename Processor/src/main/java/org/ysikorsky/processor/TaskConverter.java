@@ -39,7 +39,6 @@ public class TaskConverter {
 		return storageTask;
 	}
 
-
 	public static ProcessorTask convertToProcessorTask(StorageTask task) {
 		ProcessorTask processorTask = new ProcessorTask();
 		processorTask.setNumber(task.getNumber());

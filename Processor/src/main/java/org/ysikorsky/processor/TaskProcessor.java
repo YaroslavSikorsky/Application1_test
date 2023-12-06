@@ -10,16 +10,12 @@ public class TaskProcessor extends Thread {
 		loggerThread = new LoggerThread(taskService);
 	}
 
-	// TODO добавить синхронизацию
 	@Override
 	public void run() {
 		while (true) {
 			try {
 				Thread.sleep(1000);
-				synchronized (taskService) {
-					taskService.accomplishTask();
-				}
-				Thread.sleep(1000);
+				taskService.accomplishTask();
 			} catch (InterruptedException ex) {
 			}
 		}

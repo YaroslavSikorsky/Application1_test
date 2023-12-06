@@ -14,9 +14,8 @@ public class Main {
 		TaskService taskService = new TaskService(taskStorage);
 		TaskProcessor taskProcessor = new TaskProcessor(taskService);
 		TaskProcessor taskProcessor2 = new TaskProcessor(taskService);
+		TaskProcessor taskProcessor3 = new TaskProcessor(taskService);
 
-		sender.sendRequestTask();
-		sender.sendRequestTask();
 		sender.sendRequestTask();
 		sender.sendRequestTask();
 		sender.sendRequestTask();
@@ -24,7 +23,7 @@ public class Main {
 
 		taskProcessor.start();
 		taskProcessor2.start();
-
+		taskProcessor3.start();
 
 	}
 }

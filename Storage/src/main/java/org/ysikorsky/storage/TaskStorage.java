@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class TaskStorage {
 
-	public List<StorageTask> tasks = new ArrayList<>();
+	public final List<StorageTask> tasks = new ArrayList<>();
 
 	public void saveTask(StorageTask task) {
 		tasks.add(task);
@@ -17,11 +17,14 @@ public class TaskStorage {
 				.toList();
 	}
 
+	// TODO работает ли эта синхронизация?
 	public StorageTask findFirstCreated() {
-		Optional<StorageTask> firstInProgressTask = tasks.stream()
-				.filter(task -> task.getState() == StorageTaskState.CREATED)
-				.findFirst();
-		return firstInProgressTask.orElse(null);
+		synchronized (tasks) {
+			Optional<StorageTask> firstInProgressTask = tasks.stream()
+					.filter(task -> task.getState() == StorageTaskState.CREATED)
+					.findFirst();
+			return firstInProgressTask.orElse(null);
+		}
 	}
 
 }

@@ -8,7 +8,6 @@ public class ProcessorTask {
 	public ProcessorTaskState state;
 	public String id;
 	public int answer;
-
 //	public Date dateTimeCreated;
 //	public Date dateTimeDone;
 
