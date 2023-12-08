@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Tasks</title>
+</head>
+<body>
+<h1>View Tasks</h1>
+<ul>
+    sender.sendRequestTask();
+    <!-- Вывод задач из списка -->
+    <li th:each="task : ${tasks}" th:text="${task.id} + ' - ' + ${task.name}">Task</li>
+</ul>
+</body>
+</html>

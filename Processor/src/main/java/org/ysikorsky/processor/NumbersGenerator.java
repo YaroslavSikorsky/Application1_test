@@ -1,10 +1,11 @@
 package org.ysikorsky.processor;
 
+
 import java.util.Random;
 
 public class NumbersGenerator {
 
-	Random random = new Random();
+	public Random random = new Random();
 
 	public int generateNumber() {
 

@@ -1,25 +1,43 @@
 package org.ysikorsky.processor;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Component
 public class ProcessorTask {
 
 	public int number;
 	public ProcessorTaskState state;
 	public String id;
 	public int answer;
-//	public Date dateTimeCreated;
-//	public Date dateTimeDone;
+	public LocalDateTime localDateTimeCreated;
+	public LocalDateTime localDateTimeDone;
 
+	@Autowired
 	public ProcessorTask(int number) {
 		this.number = number;
 		this.id = UUID.randomUUID().toString();
 		this.state = ProcessorTaskState.CREATED;
-		//this.dateTimeCreated(new Date())
+		localDateTimeCreated = LocalDateTime.now();
 	}
 
-	public ProcessorTask() {
+	public void setLocalDateTimeCreated(LocalDateTime localDateTimeCreated) {
+		this.localDateTimeCreated = localDateTimeCreated;
+	}
 
+	public void setLocalDateTimeDone(LocalDateTime localDateTimeDone) {
+		this.localDateTimeDone = localDateTimeDone;
+	}
+
+	public LocalDateTime getLocalDateTimeCreated() {
+		return localDateTimeCreated;
+	}
+
+	public LocalDateTime getLocalDateTimeDone() {
+		return localDateTimeDone;
 	}
 
 	public ProcessorTaskState getState() {
