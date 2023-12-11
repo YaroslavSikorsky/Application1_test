@@ -1,0 +1,33 @@
+###
+POST http://localhost:8080/senderStart
+
+###//json отдавать
+POST http://localhost:8080/increase-speed
+Content-Type: application/json
+
+1
+
+###
+POST http://localhost:8080/decrease-speed
+Content-Type: application/json
+
+5
+
+###
+GET http://localhost:8080/current-speed
+
+###
+POST http://localhost:8080/addTaskProcessor
+
+###
+GET http://localhost:8080/tasksList
+
+
+
+
+
+
+
+
+
+

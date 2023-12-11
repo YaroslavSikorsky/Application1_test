@@ -3,6 +3,7 @@ package org.ysikorsky.processor;
 import org.ysikorsky.storage.StorageTask;
 import org.ysikorsky.storage.StorageTaskState;
 
+
 public class TaskConverter {
 
 	public static StorageTaskState convertToStorageTaskState(ProcessorTaskState state) {

@@ -1,8 +1,5 @@
 package org.ysikorsky.processor;
 
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Component;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.ysikorsky.storage.StorageTask;

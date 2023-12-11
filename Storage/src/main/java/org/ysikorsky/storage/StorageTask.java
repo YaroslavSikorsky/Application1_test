@@ -1,12 +1,8 @@
 package org.ysikorsky.storage;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Component
 public class StorageTask {
 
 	public int number;
@@ -16,7 +12,6 @@ public class StorageTask {
 	public LocalDateTime localDateTimeCreated;
 	public LocalDateTime localDateTimeDone;
 
-	@Autowired
 	public StorageTask(int number) {
 		this.number = number;
 		this.id = UUID.randomUUID().toString();

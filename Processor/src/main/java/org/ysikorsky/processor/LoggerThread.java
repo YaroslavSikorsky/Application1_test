@@ -3,12 +3,14 @@ package org.ysikorsky.processor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.*;
 
+// TODO когда компонент создатся - сразу стартанет, как вызвать чтото при создании (аннотация)
 @Component
 public class LoggerThread extends Thread {
 	private final TaskService taskService;
@@ -36,9 +38,11 @@ public class LoggerThread extends Thread {
 						}
 					}
 				}
-				Thread.sleep(10);
+				Thread.sleep(1);
 			} catch (InterruptedException ex) {
 				System.out.println("InterruptedException!!!!!!!");
+			} catch (IllegalArgumentException ex2) {
+				System.out.println(".IllegalArgumentException!!!!!!!" + ex2 );
 			}
 		}
 	}

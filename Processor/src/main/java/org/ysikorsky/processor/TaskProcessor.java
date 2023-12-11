@@ -1,21 +1,11 @@
 package org.ysikorsky.processor;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-
-@Component
 public class TaskProcessor extends Thread {
 
-	private TaskService taskService;
-	private Thread loggerThread;
+	private final TaskService taskService;
 
-	@Autowired
 	public TaskProcessor(TaskService taskService) {
 		this.taskService = taskService;
-		if (loggerThread == null) {
-			loggerThread = new LoggerThread(taskService);
-		}
 	}
 
 	@Override
@@ -23,7 +13,7 @@ public class TaskProcessor extends Thread {
 
 		while (true) {
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				taskService.accomplishTask();
 			} catch (InterruptedException ex) {
 				System.out.println(ex + "ex");
@@ -31,15 +21,6 @@ public class TaskProcessor extends Thread {
 		}
 	}
 
-	public void start() {
-		if (loggerThread.getState() == State.NEW) {
-			loggerThread.start();
-		}
-		if (super.getState() == State.NEW) {
-			super.start();
-		}
-
-	}
 }
 
 

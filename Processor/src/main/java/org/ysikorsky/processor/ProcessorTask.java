@@ -1,12 +1,10 @@
 package org.ysikorsky.processor;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Component
+
 public class ProcessorTask {
 
 	public int number;
@@ -16,7 +14,6 @@ public class ProcessorTask {
 	public LocalDateTime localDateTimeCreated;
 	public LocalDateTime localDateTimeDone;
 
-	@Autowired
 	public ProcessorTask(int number) {
 		this.number = number;
 		this.id = UUID.randomUUID().toString();
