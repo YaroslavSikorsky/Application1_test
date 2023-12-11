@@ -23,7 +23,7 @@ public class SenderProcessor extends Thread {
 
 		while (true) {
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				for (int i = 1; i <= senderSpeed; i++) {
 					NumbersGenerator numbersGenerator = new NumbersGenerator();
 					Request request = new Request(numbersGenerator.generateNumber());

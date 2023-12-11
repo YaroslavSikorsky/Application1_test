@@ -13,7 +13,7 @@ public class TaskProcessor extends Thread {
 
 		while (true) {
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1);
 				taskService.accomplishTask();
 			} catch (InterruptedException ex) {
 				System.out.println(ex + "ex");
