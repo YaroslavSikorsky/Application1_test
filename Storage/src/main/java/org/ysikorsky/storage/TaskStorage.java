@@ -1,7 +1,10 @@
 package org.ysikorsky.storage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.ysikorsky.storage.repository.StorageTaskRepository;
 
 
@@ -11,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-
 
 @Component
 public class TaskStorage {

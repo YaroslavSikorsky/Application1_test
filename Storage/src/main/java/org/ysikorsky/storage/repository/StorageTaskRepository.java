@@ -12,7 +12,7 @@ import org.ysikorsky.storage.StorageTask;
 import java.sql.Timestamp;
 import java.util.Optional;
 
-@Repository
+
 public interface StorageTaskRepository extends CrudRepository<StorageTask, Integer> {
 
 	@Query("SELECT * FROM public.tasks ")
