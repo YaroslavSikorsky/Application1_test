@@ -1,17 +1,24 @@
 package org.ysikorsky.controller.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 import org.ysikorsky.processor.LoggerThread;
 import org.ysikorsky.processor.Sender;
 import org.ysikorsky.processor.TaskProcessor;
+import javax.annotation.PostConstruct;
+import java.util.List;
+import java.util.Optional;
+
+//*************1 для переноса в сторедж
 import org.ysikorsky.storage.StorageTask;
 import org.ysikorsky.storage.TaskStorage;
 
-import javax.annotation.PostConstruct;
-import java.util.List;
+
 
 @Service
+
 public class AppService {
 
 	@Autowired
@@ -20,13 +27,26 @@ public class AppService {
 	@Autowired
 	private List<TaskProcessor> taskProcessorList;
 
-	@Autowired
-	private TaskStorage taskStorage;
+	int taskProcessorCount = 0;
 
 	@Autowired
 	private LoggerThread loggerThread;
 
-	int taskProcessorCount = 0;
+	@Autowired
+	private TaskStorage taskStorage;
+
+	public Iterable<StorageTask> getAllTasks() {
+		return taskStorage.findAll();
+	}
+
+	public StorageTask createTask(StorageTask storageTask) {
+		taskStorage.saveTask(storageTask);
+		return storageTask;
+	}
+
+	public Optional<StorageTask> getTask(@PathVariable String id) {
+		return taskStorage.getTask(id);
+	}
 
 	// TODO скорость а не количество (в теле а не урле)
 	public int increaseSpeed(int speed) {
@@ -76,10 +96,6 @@ public class AppService {
 			System.out.println("IndexOutOfBoundsException = " + indexOutOfBoundsException);
 		}
 		return "TaskProcessor running " + taskProcessorCount + " threads, name: " + name + "!";
-
 	}
 
-	public List<StorageTask> getTasks() {
-		return taskStorage.allTasks();
-	}
 }

@@ -13,7 +13,7 @@ public class Sender {
 
 
 	@Autowired
-	public Sender(Receiver receiver, TaskService taskService) {
+	public Sender(Receiver receiver) {
 		this.receiver = receiver;
 		this.senderProcessor = new SenderProcessor(senderSpeed, receiver);
 

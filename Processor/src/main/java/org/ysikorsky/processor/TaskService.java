@@ -8,6 +8,7 @@ import org.ysikorsky.storage.TaskStorage;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class TaskService {
@@ -20,22 +21,26 @@ public class TaskService {
 	}
 
 	public List<ProcessorTask> getAllTasks() {
-
-		return taskStorage.allTasks().stream()
+		return taskStorage.findAll().stream()
 				.map(TaskConverter::convertToProcessorTask)
 				.toList();
 	}
 
 	public void accomplishTask() {
+		Optional<StorageTask> firstCreatedTask = taskStorage.firstCreatedTask();
+		if (firstCreatedTask.isPresent()) {
+			StorageTask storageTask = firstCreatedTask.get();
+			int number = storageTask.getNumber();
+			storageTask.setState(StorageTaskState.IN_PROGRESS);
 
-		StorageTask firstCreatedTask = taskStorage.findFirstCreated();
-		if (firstCreatedTask != null) {
-			int number = firstCreatedTask.getNumber();
-			firstCreatedTask.setState(StorageTaskState.IN_PROGRESS);
+			taskStorage.updateTaskInProgress(storageTask);
+
 			int calculate = calculate(number);
-			firstCreatedTask.setAnswer(calculate);
-			firstCreatedTask.setState(StorageTaskState.DONE);
-			firstCreatedTask.setLocalDateTimeDone(LocalDateTime.now());
+			storageTask.setAnswer(calculate);
+			storageTask.setState(StorageTaskState.DONE);
+			storageTask.setLocalDateTimeDone(LocalDateTime.now());
+
+			taskStorage.updateTaskDone(storageTask);
 		}
 	}
 

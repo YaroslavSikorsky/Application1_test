@@ -20,9 +20,15 @@
     </properties>
 
     <dependencies>
+<!--        //*************1 для переноса в сторедж-->
         <dependency>
             <groupId>org.ysikorsky.processor</groupId>
             <artifactId>Processor</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ysikorsky.storage</groupId>
+            <artifactId>Storage</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -45,11 +51,24 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+            <version>3.0.4</version>
+            <!--            было 3.2.0 как и спринг основной, заменил на 2.7.3-->
+            <!--            было 2.7.3 как и спринг основной, заменил на 3.0.4 тк опять поломалось-->
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>compile</scope>
         </dependency>
+
     </dependencies>
 
     <build>

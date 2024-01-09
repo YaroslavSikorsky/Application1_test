@@ -1,10 +1,11 @@
 package org.ysikorsky.controller.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.ysikorsky.processor.TaskProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import org.ysikorsky.processor.LoggerThread;
+import org.ysikorsky.processor.TaskProcessor;
 import org.ysikorsky.processor.TaskService;
 
 import java.util.ArrayList;

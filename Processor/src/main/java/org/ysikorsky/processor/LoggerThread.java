@@ -13,6 +13,7 @@ import java.util.logging.*;
 // TODO когда компонент создатся - сразу стартанет, как вызвать чтото при создании (аннотация)
 @Component
 public class LoggerThread extends Thread {
+
 	private final TaskService taskService;
 	private static final Logger logger = Logger.getLogger(LoggerThread.class.getName());
 	private static final Map<String, String> taskStateMap = new HashMap<>();
@@ -27,6 +28,7 @@ public class LoggerThread extends Thread {
 		while (true) {
 			try {
 				synchronized (taskStateMap) {
+					Thread.sleep(1);
 					List<ProcessorTask> tasks = taskService.getAllTasks();
 					for (ProcessorTask task : tasks) {
 						String taskId = task.getId();
@@ -40,9 +42,16 @@ public class LoggerThread extends Thread {
 				}
 				Thread.sleep(1);
 			} catch (InterruptedException ex) {
-				System.out.println("InterruptedException!!!!!!!");
+				System.out.println("logger: InterruptedException!!!!!!!");
 			} catch (IllegalArgumentException ex2) {
-				System.out.println(".IllegalArgumentException!!!!!!!" + ex2 );
+				System.out.println("logger: IllegalArgumentException!!!!!!!" + ex2);
+			} catch (NullPointerException ex3) {
+				System.out.println("logger: NullPointerException!!!!!!!" + ex3);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

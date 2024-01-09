@@ -32,9 +32,9 @@ public class TaskConverter {
 
 	public static StorageTask convertToStorageTask(ProcessorTask task) {
 		StorageTask storageTask = new StorageTask(task.getNumber());
+		storageTask.setId(task.getId());
 		storageTask.setNumber(task.getNumber());
 		storageTask.setState(convertToStorageTaskState(task.getState()));
-		storageTask.setId(task.getId());
 		storageTask.setAnswer(task.getAnswer());
 		storageTask.setLocalDateTimeCreated(task.getLocalDateTimeCreated());
 		storageTask.setLocalDateTimeDone(task.getLocalDateTimeDone());
@@ -43,9 +43,9 @@ public class TaskConverter {
 
 	public static ProcessorTask convertToProcessorTask(StorageTask task) {
 		ProcessorTask processorTask = new ProcessorTask(task.getNumber());
+		processorTask.setId(task.getId());
 		processorTask.setNumber(task.getNumber());
 		processorTask.setState(convertToProcessorTaskState(task.getState()));
-		processorTask.setId(task.getId());
 		processorTask.setAnswer(task.getAnswer());
 		processorTask.setLocalDateTimeCreated(task.getLocalDateTimeCreated());
 		processorTask.setLocalDateTimeDone(task.getLocalDateTimeDone());

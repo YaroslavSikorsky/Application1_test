@@ -7,9 +7,9 @@ import java.util.UUID;
 
 public class ProcessorTask {
 
+	public String id;
 	public int number;
 	public ProcessorTaskState state;
-	public String id;
 	public int answer;
 	public LocalDateTime localDateTimeCreated;
 	public LocalDateTime localDateTimeDone;
@@ -55,12 +55,12 @@ public class ProcessorTask {
 
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public String getId() {
+		return id;
 	}
 
-	public String getId() {
-		return this.id;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public int getAnswer() {
@@ -75,5 +75,15 @@ public class ProcessorTask {
 
 	}
 
-
+	@Override
+	public String toString() {
+		return "ProcessorTask{" +
+				"id='" + id + '\'' +
+				", number=" + number +
+				", state=" + state +
+				", answer=" + answer +
+				", localDateTimeCreated=" + localDateTimeCreated +
+				", localDateTimeDone=" + localDateTimeDone +
+				'}';
+	}
 }

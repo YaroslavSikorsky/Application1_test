@@ -1,7 +1,5 @@
 package org.ysikorsky.processor;
 
-import org.ysikorsky.storage.TaskStorage;
-
 public class Main {
 
 	public static void main(String[] args) {
@@ -17,7 +15,7 @@ public class Main {
 //
 //		sender.sendRequestTask();
 //		sender.sendRequestTask();
-////		sender.sendRequestTask();
+//		sender.sendRequestTask();
 ////		sender.sendRequestTask();
 //
 //		taskProcessor.start();
