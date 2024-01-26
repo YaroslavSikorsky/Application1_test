@@ -6,10 +6,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 
 
-//*************1 для переноса в сторедж
+
 @SpringBootApplication
-@EnableJdbcRepositories(basePackages = {"org.ysikorsky.storage"})
-@ComponentScan(basePackages = {"org.ysikorsky.processor", "org.ysikorsky.storage"})
+@EnableJdbcRepositories(basePackages = {"org.ysikorsky.controller"})
 public class Controller {
 
 	public static void main(String[] args) {

@@ -16,10 +16,28 @@
     </properties>
 
     <modules>
-        <module>Storage</module>
-        <module>Processor</module>
         <module>Controller</module>
+        <module>Processor</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.7.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jdbc</artifactId>
+                <version>3.0.4</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
 </project>

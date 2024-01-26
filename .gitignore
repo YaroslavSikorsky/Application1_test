@@ -1,0 +1,10 @@
+# Project exclude paths
+/out/
+.idea/
+/Storage/target/
+/Processor/target/
+/Controller/target/
+/Controller/Controller.iml
+/Processor/Processor.iml
+/Application1_test.iml
+/Storage/Storage.iml
