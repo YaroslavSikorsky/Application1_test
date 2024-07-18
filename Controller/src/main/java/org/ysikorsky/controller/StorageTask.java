@@ -22,7 +22,7 @@ public class StorageTask {
 		this.number = number;
 		this.id = UUID.randomUUID().toString();
 		this.state = StorageTaskState.CREATED;
-		this.localDateTimeCreated = LocalDateTime.now();
+		//this.localDateTimeCreated = LocalDateTime.now();
 	}
 
 	@Override

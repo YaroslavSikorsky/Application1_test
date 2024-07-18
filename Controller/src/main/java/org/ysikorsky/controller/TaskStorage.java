@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,8 +26,8 @@ public class TaskStorage {
 		storageTaskRepository.save(
 				storageTask.getId(),
 				storageTask.getNumber(),
-				storageTask.getState().toString(),
-				Timestamp.valueOf(storageTask.getLocalDateTimeCreated())
+				storageTask.getState().toString()//,
+				//Timestamp.valueOf(storageTask.getLocalDateTimeCreated())
 		);
 	}
 
@@ -47,6 +48,10 @@ public class TaskStorage {
 	public void updateTaskInProgress(StorageTask storageTask) {
 		storageTaskRepository.saveInProgress(
 				storageTask.getState().toString(),
+				storageTask.getId()
+		);
+		storageTaskRepository.saveInProgressTime(
+				Timestamp.valueOf(LocalDateTime.now()),
 				storageTask.getId()
 		);
 	}

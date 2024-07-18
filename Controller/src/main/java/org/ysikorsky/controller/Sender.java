@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Sender {
 
 	public SenderProcessor senderProcessor;
-	public int senderSpeed = 10;
+	public int senderSpeed = 1;		//вернуть 10
 	public Receiver receiver;
 
 

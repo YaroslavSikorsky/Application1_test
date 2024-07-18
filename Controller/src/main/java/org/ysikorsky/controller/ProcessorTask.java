@@ -18,7 +18,7 @@ public class ProcessorTask {
 		this.number = number;
 		this.id = UUID.randomUUID().toString();
 		this.state = ProcessorTaskState.CREATED;
-		localDateTimeCreated = LocalDateTime.now();
+		//localDateTimeCreated = LocalDateTime.now();
 	}
 
 	public void setLocalDateTimeCreated(LocalDateTime localDateTimeCreated) {
