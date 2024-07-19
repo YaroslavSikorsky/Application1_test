@@ -51,6 +51,7 @@ public class TaskStorage {
 				storageTask.getState().toString(),
 				storageTask.getId()
 		);
+
 		storageTaskRepository.saveInProgressTime(
 				Timestamp.valueOf(LocalDateTime.now()),
 				storageTask.getId()

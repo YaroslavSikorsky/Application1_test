@@ -18,13 +18,12 @@ public interface StorageTaskRepository extends CrudRepository<StorageTask, Integ
 	@Query("SELECT * FROM public.tasks ORDER BY local_date_time_created ASC")
 	Iterable<StorageTask> findAll();
 
-	//	@Modifying
+//	@Modifying
 //	@Query("INSERT INTO public.tasks (id, number, state, local_date_time_created) VALUES (:id, :number, :state, :localDateTimeCreated)")
 //	Integer save(String id, Integer number, String state, Timestamp localDateTimeCreated);
 	@Modifying
 	@Query("INSERT INTO public.tasks (id, number, state) VALUES (:id, :number, :state)")
 	Integer save(String id, Integer number, String state);
-
 
 	@Query("SELECT * FROM public.tasks WHERE id = :id ORDER BY local_date_time_created ASC")
 	Optional<StorageTask> findById(String id);

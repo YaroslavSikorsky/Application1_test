@@ -27,9 +27,7 @@ public class TaskService {
 //			StorageTask storageTask = firstCreatedTask.get();
 //			int number = storageTask.getNumber();
 //			storageTask.setState(StorageTaskState.IN_PROGRESS);
-//
 //			taskStorage.updateTaskInProgress(storageTask);
-//
 //			int calculate = calculate(number);
 //			storageTask.setAnswer(calculate);
 //			storageTask.setState(StorageTaskState.DONE);
