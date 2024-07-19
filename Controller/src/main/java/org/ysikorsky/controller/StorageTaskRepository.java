@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -29,8 +30,8 @@ public interface StorageTaskRepository extends CrudRepository<StorageTask, Integ
 	Optional<StorageTask> findById(String id);
 
 	//@Query("SELECT * FROM public.tasks WHERE state = 'CREATED' LIMIT 1")
-	@Query("SELECT * FROM public.tasks WHERE state = 'CREATED' ORDER BY local_date_time_created ASC LIMIT 1")
-	Optional<StorageTask> firstCreatedTask();
+	@Query("SELECT * FROM public.tasks WHERE state = 'CREATED' ORDER BY local_date_time_created ASC LIMIT 10")
+	List<StorageTask> firstCreatedTask();
 
 	@Modifying
 	@Query("UPDATE public.tasks SET state = :state WHERE id = :id")

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
+import java.sql.SQLOutput;
 import java.sql.Timestamp;
 
 import java.time.LocalDateTime;
@@ -31,7 +32,7 @@ public class TaskStorage {
 		);
 	}
 
-	public Optional<StorageTask> firstCreatedTask() {
+	public List<StorageTask> firstCreatedTask() {
 		return storageTaskRepository.firstCreatedTask();
 	}
 

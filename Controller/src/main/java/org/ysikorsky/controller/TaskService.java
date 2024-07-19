@@ -12,6 +12,8 @@ import java.util.Optional;
 @Component
 public class TaskService {
 
+	int c = 0;
+
 	private final TaskStorage taskStorage;
 
 	@Autowired
@@ -19,10 +21,33 @@ public class TaskService {
 		this.taskStorage = taskStorage;
 	}
 
+//	public void accomplishTask() {
+//		Optional<StorageTask> firstCreatedTask = taskStorage.firstCreatedTask();
+//		if (firstCreatedTask.isPresent()) {
+//			StorageTask storageTask = firstCreatedTask.get();
+//			int number = storageTask.getNumber();
+//			storageTask.setState(StorageTaskState.IN_PROGRESS);
+//
+//			taskStorage.updateTaskInProgress(storageTask);
+//
+//			int calculate = calculate(number);
+//			storageTask.setAnswer(calculate);
+//			storageTask.setState(StorageTaskState.DONE);
+//			storageTask.setLocalDateTimeDone(LocalDateTime.now());
+//
+//			taskStorage.updateTaskDone(storageTask);
+//		}
+//	}
+
 	public void accomplishTask() {
-		Optional<StorageTask> firstCreatedTask = taskStorage.firstCreatedTask();
-		if (firstCreatedTask.isPresent()) {
-			StorageTask storageTask = firstCreatedTask.get();
+		List<StorageTask> firstCreatedTasks = taskStorage.firstCreatedTask();
+		//System.out.println(firstCreatedTasks.toString() + "!!!!!!!!!!!!!!!!!!!!!!!");
+		for (StorageTask storageTask : firstCreatedTasks) {
+			System.out.println(storageTask.toString() + c + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		}
+		c++;
+
+		for (StorageTask storageTask : firstCreatedTasks) {
 			int number = storageTask.getNumber();
 			storageTask.setState(StorageTaskState.IN_PROGRESS);
 
