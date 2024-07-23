@@ -1,5 +1,6 @@
 package org.ysikorsky.controller;
 
+import org.mockito.internal.creation.settings.CreationSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,10 @@ public class AppController {
 
 	@Autowired
 	AppService appService;
+
+	public AppController(AppService appService) {
+		this.appService = appService;
+	}
 
 	//***************************** SENDER
 
