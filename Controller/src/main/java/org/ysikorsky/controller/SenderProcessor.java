@@ -1,22 +1,20 @@
 package org.ysikorsky.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class SenderProcessor extends Thread {
 
-	public int senderSpeed;
+	public TaskStorage taskStorage;
+	public int senderSpeed = 1;
 	public Receiver receiver;
 
-	public SenderProcessor(int senderSpeed, Receiver receiver) {
-		this.senderSpeed = senderSpeed;
+	@Autowired
+	public SenderProcessor(Receiver receiver, TaskStorage taskStorage) {
 		this.receiver = receiver;
-	}
-
-	public int getSenderSpeed() {
-		return senderSpeed;
-	}
-
-	public void setSenderSpeed(int senderSpeed) {
-		this.senderSpeed = senderSpeed;
+		this.taskStorage = taskStorage;
 	}
 
 	@Override
@@ -25,6 +23,7 @@ public class SenderProcessor extends Thread {
 		while (true) {
 			try {
 				Thread.sleep(1000);
+				senderSpeed = taskStorage.getSenderSpeed(1);
 				for (int i = 1; i <= senderSpeed; i++) {
 					NumbersGenerator numbersGenerator = new NumbersGenerator();
 					Request request = new Request(numbersGenerator.generateNumber());

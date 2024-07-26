@@ -42,41 +42,55 @@ public class AppService {
 	//____________________________ SENDER
 
 	public int senderStart() {
-		return sender.senderStart();
+		boolean exists = taskStorage.existsSenderSpeed();
+		if (!exists) {
+			taskStorage.setSenderSpeed(1, 1);
+			sender.senderStart(1);
+		} else {
+			sender.decreaseSpeed(1, taskStorage.getSenderSpeed(1) - 1);
+		}
+
+		return taskStorage.getSenderSpeed(1);
 	}
 
 	public int increaseSpeed(int speed) {
-		return sender.increaseSpeed(speed);
+		return sender.increaseSpeed(1, speed);
 	}
 
 	public int decreaseSpeed(int speed) {
-		return sender.decreaseSpeed(speed);
+		return sender.decreaseSpeed(1, speed);
 	}
 
 	public int currentSpeed() {
-		return sender.getSenderSpeed();
+		return sender.getSenderSpeed(1);
 	}
 
 	//____________________________ PROCESSOR
 
 	public String addTaskProcessor() {
+		boolean exists = taskStorage.existsProcessorSpeed();
+		if (!exists) {
+			taskStorage.setProcessorSpeed(1, 1);
+		} else {
+			processor.decreaseSpeed(1, taskStorage.getProcessorSpeed(1) - 1);
+		}
 		return processor.addTaskProcessor();
 	}
 
-	public String getTaskProcessorCount(){
+	public String getTaskProcessorCount() {
 		return Integer.toString(processor.getTaskProcessorCount());
 	}
 
 	public int increaseSpeedProcessor(int speed) {
-		return processor.increaseSpeed(speed);
+		return processor.increaseSpeed(1, speed);
 	}
 
 	public int decreaseSpeedProcessor(int speed) {
-		return processor.decreaseSpeed(speed);
+		return processor.decreaseSpeed(1, speed);
 	}
 
 	public int currentSpeedProcessor() {
-		return processor.getProcessorSpeed();
+		return taskStorage.getProcessorSpeed(1);
 	}
 
 	//____________________________ LOGGER

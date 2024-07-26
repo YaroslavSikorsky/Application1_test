@@ -11,42 +11,46 @@ public class Processor {
 
 	@Autowired
 	public TaskService taskService;
-	public int processorSpeed = 1;
+	@Autowired
+	public TaskStorage taskStorage;
 	int taskProcessorCount = 0;
 
 	public List<TaskProcessor> taskProcessorList = new ArrayList<>();
 
-	public int getProcessorSpeed() {
-		return processorSpeed;
+
+	public int increaseSpeed(int id, int speed) {
+
+//		for (TaskProcessor taskProcessor : taskProcessorList
+//		) {
+//			taskStorage.setProcessorSpeed(id,taskStorage.getProcessorSpeed(id) + speed);
+//			//taskProcessor.setProcessorSpeed(taskStorage.getProcessorSpeed(1) + speed);
+//		}
+		taskStorage.increaseProcessorSpeed(id, taskStorage.getProcessorSpeed(id) + speed);
+		return taskStorage.getProcessorSpeed(id);
 	}
 
-	public int increaseSpeed(int speed) {
-		processorSpeed += speed;
-		for (TaskProcessor taskProcessor : taskProcessorList
-		) {
-			taskProcessor.setProcessorSpeed(processorSpeed);
-		}
-		return processorSpeed;
-	}
+	public int decreaseSpeed(int id, int speed) {
 
-	public int decreaseSpeed(int speed) {
-		processorSpeed -= speed;
-		for (TaskProcessor taskProcessor : taskProcessorList
-		) {
-			taskProcessor.setProcessorSpeed(processorSpeed);
-		}
-		return processorSpeed;
+//		for (TaskProcessor taskProcessor : taskProcessorList
+//		) {
+//			taskStorage.setProcessorSpeed(id,taskStorage.getProcessorSpeed(id) - speed);
+//			//taskProcessor.setProcessorSpeed(taskStorage.getProcessorSpeed(1) - speed);
+//		}
+		taskStorage.decreaseProcessorSpeed(id, taskStorage.getProcessorSpeed(id) - speed);
+		return taskStorage.getProcessorSpeed(id);
 	}
 
 	public String addTaskProcessor() {
 		// todo try catch IndexOutOfBoundsException?
-		taskProcessorList.add(new TaskProcessor(taskService));
-		taskProcessorList.get(taskProcessorCount).setProcessorSpeed(processorSpeed);
+
+		taskProcessorList.add(new TaskProcessor(taskService, taskStorage));
+		//taskProcessorList.get(taskProcessorCount).setProcessorSpeed(taskStorage.getProcessorSpeed(1));
 		taskProcessorList.get(taskProcessorCount).start();
 		System.out.println(
-				" " +taskProcessorList.get(taskProcessorCount).getName() + " " +
+				" " + taskProcessorList.get(taskProcessorCount).getName() + " " +
 						taskProcessorList.get(taskProcessorCount).getState() +
-						taskProcessorList.get(taskProcessorCount).getProcessorSpeed()
+//						taskProcessorList.get(taskProcessorCount).getProcessorSpeed()
+						taskStorage.getProcessorSpeed(1)
 		);
 		taskProcessorCount++;
 		return taskProcessorList.get(taskProcessorCount - 1).getName();

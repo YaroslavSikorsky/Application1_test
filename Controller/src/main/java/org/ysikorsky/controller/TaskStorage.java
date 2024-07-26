@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
-import java.sql.SQLOutput;
 import java.sql.Timestamp;
 
 import java.time.LocalDateTime;
@@ -46,8 +45,17 @@ public class TaskStorage {
 		return list;
 	}
 
+	boolean existsSenderSpeed() {
+		return storageTaskRepository.countSenderSpeedById() > 0;
+	}
+
+	boolean existsProcessorSpeed() {
+		return storageTaskRepository.countProcessorSpeedById() > 0;
+	}
+
+
 	public void updateTaskInProgress(StorageTask storageTask) {
-		storageTaskRepository.saveInProgress(
+		storageTaskRepository.saveInProgressState(
 				storageTask.getState().toString(),
 				storageTask.getId()
 		);
@@ -59,7 +67,7 @@ public class TaskStorage {
 	}
 
 	public void updateTaskDone(StorageTask storageTask) {
-		storageTaskRepository.saveDone(
+		storageTaskRepository.saveDoneData(
 				storageTask.getAnswer(),
 				storageTask.getState().toString(),
 				Timestamp.valueOf(storageTask.getLocalDateTimeDone()),
@@ -67,8 +75,47 @@ public class TaskStorage {
 		);
 	}
 
+
 	public Optional<StorageTask> getTask(String id) {
 		return storageTaskRepository.findById(id);
+	}
+
+	//____________________________ SENDER
+
+	public int setSenderSpeed(int id, int senderSpeed) {
+		storageTaskRepository.saveSenderSpeed(id, senderSpeed);
+		return storageTaskRepository.getSpeed(1);
+	}
+
+	public void increaseSpeed(int id, int senderSpeed) {
+		storageTaskRepository.updateSpeed(id, senderSpeed);
+	}
+
+	public void decreaseSpeed(int id, int senderSpeed) {
+		storageTaskRepository.updateSpeed(id, senderSpeed);
+	}
+
+	public int getSenderSpeed(int id) {
+		return storageTaskRepository.getSpeed(id);
+	}
+
+	//____________________________ PROCESSOR
+
+	public int setProcessorSpeed(int id, int processorSpeed) {
+		storageTaskRepository.saveProcessorSpeed(id, processorSpeed);
+		return storageTaskRepository.getProcessorSpeed(1);
+	}
+
+	public void increaseProcessorSpeed(int id, int processorSpeed) {
+		storageTaskRepository.updateProcessorSpeed(id, processorSpeed);
+	}
+
+	public void decreaseProcessorSpeed(int id, int processorSpeed) {
+		storageTaskRepository.updateProcessorSpeed(id, processorSpeed);
+	}
+
+	public int getProcessorSpeed(int id) {
+		return storageTaskRepository.getProcessorSpeed(id);
 	}
 
 }
