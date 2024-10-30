@@ -59,4 +59,8 @@ public class Processor {
 	public int getTaskProcessorCount() {
 		return taskProcessorCount;
 	}
+	public int setDefaultTaskProcessorCount(){
+		this.taskProcessorList = new ArrayList<>();
+		return this.taskProcessorCount = 0;
+	}
 }

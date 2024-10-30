@@ -20,7 +20,7 @@ public class AppController {
 		this.appService = appService;
 	}
 
-	//***************************** SENDER
+	//____________________________ SENDER
 
 	@PostMapping("/senderStart")
 	public String senderStart() {
@@ -43,7 +43,12 @@ public class AppController {
 		return "Current speed is " + appService.currentSpeed();
 	}
 
-	//***************************** PROCESSOR
+	@GetMapping("/set-sender-def")
+	public int setDefaultSenderSpeed(){
+		return appService.setDefaultSenderSpeed();
+	}
+
+	//____________________________ PROCESSOR
 
 	@PostMapping("/addTaskProcessor")
 	public String addTaskProcessor() {
@@ -70,7 +75,16 @@ public class AppController {
 		return "Current speed is " + appService.currentSpeedProcessor();
 	}
 
-	//***************************** TEST
+	@PostMapping("/set-processor-def")
+	public int setDefaultProcessorSpeed(){
+		return appService.setDefaultProcessorSpeed();
+	}
+	@PostMapping("/set-count-proc-def")
+	public int setDefaultTaskProcessorCount(){
+		return appService.setDefaultTaskProcessorCount();
+	}
+
+	//____________________________ TEST
 
 	@GetMapping("/tasksList")
 	public @ResponseBody
@@ -78,17 +92,25 @@ public class AppController {
 		return appService.getAllTasks();
 	}
 
-	@PostMapping("/add")
+	@PostMapping("/add") // не используется
 	public @ResponseBody
 	ResponseEntity<StorageTask> createTask(@RequestBody StorageTask task) {
 		StorageTask storageTask = appService.createTask(task);
 		return new ResponseEntity<>(storageTask, HttpStatus.CREATED);
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/{id}") // не используется
 	public @ResponseBody
 	Optional<StorageTask> getTask(@PathVariable String id) {
 		return appService.getTask(id);
 	}
 
+	//____________________________ TRUNCATE
+	public void truncateProcessorSpeed() {
+		appService.truncateProcessorSpeed();
+	}
+
+	public void truncateSenderSpeed() {
+		appService.truncateSenderSpeed();
+	}
 }

@@ -7,6 +7,7 @@ import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -33,6 +34,13 @@ public interface StorageTaskRepository extends CrudRepository<StorageTask, Integ
 	@Query("SELECT COUNT(*) FROM public.processor_speed")
 	Integer countProcessorSpeedById();
 
+	@Modifying
+	@Query(value = "TRUNCATE TABLE public.processor_speed")
+	void truncateProcessorSpeed();
+
+	@Modifying
+	@Query(value = "TRUNCATE TABLE public.senders")
+	void truncateSenderSpeed();
 	//____________________________ TASK
 
 //	@Modifying

@@ -1,6 +1,8 @@
 package org.ysikorsky.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jdbc.repository.query.Modifying;
+import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.stereotype.Component;
 
 
@@ -53,6 +55,15 @@ public class TaskStorage {
 		return storageTaskRepository.countProcessorSpeedById() > 0;
 	}
 
+	void truncateProcessorSpeed() {
+		storageTaskRepository.truncateProcessorSpeed();
+	}
+
+	void truncateSenderSpeed() {
+		storageTaskRepository.truncateSenderSpeed();
+	}
+
+	//____________________________ TEST
 
 	public void updateTaskInProgress(StorageTask storageTask) {
 		storageTaskRepository.saveInProgressState(
@@ -103,7 +114,13 @@ public class TaskStorage {
 
 	public int setProcessorSpeed(int id, int processorSpeed) {
 		storageTaskRepository.saveProcessorSpeed(id, processorSpeed);
-		return storageTaskRepository.getProcessorSpeed(1);
+		Integer speed = storageTaskRepository.getProcessorSpeed(id);
+		// Проверьте, что speed не равен null
+		if (speed == null) {
+			speed = 1;
+			//throw new IllegalStateException("Processor speed not found");
+		}
+		return speed;
 	}
 
 	public void increaseProcessorSpeed(int id, int processorSpeed) {
@@ -115,7 +132,13 @@ public class TaskStorage {
 	}
 
 	public int getProcessorSpeed(int id) {
-		return storageTaskRepository.getProcessorSpeed(id);
+		Integer speed = storageTaskRepository.getProcessorSpeed(1);
+		// Проверьте, что speed не равен null
+		if (speed == null) {
+			speed = 1;
+			//throw new IllegalStateException("Processor speed not found");
+		}
+		return speed;
 	}
 
 }

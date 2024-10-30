@@ -42,14 +42,16 @@ public class AppService {
 	//____________________________ SENDER
 
 	public int senderStart() {
-		boolean exists = taskStorage.existsSenderSpeed();
-		if (!exists) {
-			taskStorage.setSenderSpeed(1, 1);
-			sender.senderStart(1);
-		} else {
-			sender.decreaseSpeed(1, taskStorage.getSenderSpeed(1) - 1);
-		}
-
+//		boolean exists = taskStorage.existsSenderSpeed();
+//		if (!exists) {
+//			taskStorage.setSenderSpeed(1, 1);
+//			sender.senderStart(1);
+//		} else {
+//			sender.decreaseSpeed(1, taskStorage.getSenderSpeed(1) - 1);
+//		}
+		truncateSenderSpeed();
+		setDefaultSenderSpeed();
+		sender.senderStart(1);
 		return taskStorage.getSenderSpeed(1);
 	}
 
@@ -65,15 +67,21 @@ public class AppService {
 		return sender.getSenderSpeed(1);
 	}
 
+	public int setDefaultSenderSpeed(){
+		return taskStorage.setSenderSpeed(1, 1);
+	}
+
 	//____________________________ PROCESSOR
 
 	public String addTaskProcessor() {
-		boolean exists = taskStorage.existsProcessorSpeed();
-		if (!exists) {
-			taskStorage.setProcessorSpeed(1, 1);
-		} else {
-			processor.decreaseSpeed(1, taskStorage.getProcessorSpeed(1) - 1);
-		}
+//		boolean exists = taskStorage.existsProcessorSpeed();
+//		if (!exists) {
+//			taskStorage.setProcessorSpeed(1, 1);
+//		} else {
+//			processor.decreaseSpeed(1, taskStorage.getProcessorSpeed(1) - 1);
+//		}
+		truncateProcessorSpeed();
+		setDefaultProcessorSpeed();
 		return processor.addTaskProcessor();
 	}
 
@@ -93,6 +101,14 @@ public class AppService {
 		return taskStorage.getProcessorSpeed(1);
 	}
 
+	public int setDefaultProcessorSpeed(){
+		return taskStorage.setProcessorSpeed(1,1);
+	}
+
+	public int  setDefaultTaskProcessorCount(){
+		return  processor.setDefaultTaskProcessorCount();
+	}
+
 	//____________________________ LOGGER
 
 	@PostConstruct
@@ -100,4 +116,12 @@ public class AppService {
 		loggerThread.start();
 	}
 
+	//____________________________ TRUNCATE
+	public void truncateProcessorSpeed() {
+		taskStorage.truncateProcessorSpeed();
+	}
+
+	public void truncateSenderSpeed(){
+		taskStorage.truncateSenderSpeed();
+	}
 }
