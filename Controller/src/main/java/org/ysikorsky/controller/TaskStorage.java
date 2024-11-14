@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.sql.Timestamp;
@@ -28,8 +29,9 @@ public class TaskStorage {
 		storageTaskRepository.save(
 				storageTask.getId(),
 				storageTask.getNumber(),
-				storageTask.getState().toString()//,
+				storageTask.getState().toString(),//,
 				//Timestamp.valueOf(storageTask.getLocalDateTimeCreated())
+				0
 		);
 	}
 
@@ -65,7 +67,13 @@ public class TaskStorage {
 
 	//____________________________ TEST
 
+	@Transactional
 	public void updateTaskInProgress(StorageTask storageTask) {
+		System.out.println(storageTask.getId());
+		// todo пробую взять и обновить счетчик обращений процессора к строке
+		int x = storageTaskRepository.getTasksCounterProcessor(storageTask.getId());
+		storageTaskRepository.updateTasksCounterProcessor(storageTask.getId(),x+1);
+		System.out.println(x);
 		storageTaskRepository.saveInProgressState(
 				storageTask.getState().toString(),
 				storageTask.getId()
@@ -75,6 +83,7 @@ public class TaskStorage {
 				Timestamp.valueOf(LocalDateTime.now()),
 				storageTask.getId()
 		);
+
 	}
 
 	public void updateTaskDone(StorageTask storageTask) {

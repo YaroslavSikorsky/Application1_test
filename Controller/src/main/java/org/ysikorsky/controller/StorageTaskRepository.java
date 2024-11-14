@@ -22,7 +22,7 @@ public interface StorageTaskRepository extends CrudRepository<StorageTask, Integ
 	Optional<StorageTask> findById(String id);
 
 	//@Query("SELECT * FROM public.tasks WHERE state = 'CREATED' LIMIT 1")
-	@Query("SELECT * FROM public.tasks WHERE state = 'CREATED' ORDER BY local_date_time_created ASC LIMIT 10")
+	@Query("SELECT * FROM public.tasks WHERE state = 'CREATED' ORDER BY local_date_time_created ASC LIMIT 10 FOR UPDATE")
 	List<StorageTask> firstCreatedTask();
 
 	@Query("SELECT * FROM public.tasks ORDER BY local_date_time_created ASC")
@@ -47,8 +47,8 @@ public interface StorageTaskRepository extends CrudRepository<StorageTask, Integ
 //	@Query("INSERT INTO public.tasks (id, number, state, local_date_time_created) VALUES (:id, :number, :state, :localDateTimeCreated)")
 //	Integer save(String id, Integer number, String state, Timestamp localDateTimeCreated);
 	@Modifying
-	@Query("INSERT INTO public.tasks (id, number, state) VALUES (:id, :number, :state)")
-	Integer save(String id, Integer number, String state);
+	@Query("INSERT INTO public.tasks (id, number, state, counter) VALUES (:id, :number, :state, :counter)")
+	Integer save(String id, Integer number, String state, Integer counter);
 
 	@Modifying
 	@Query("UPDATE public.tasks SET state = :state WHERE id = :id")
@@ -88,4 +88,12 @@ public interface StorageTaskRepository extends CrudRepository<StorageTask, Integ
 
 	@Query("SELECT speed FROM public.processor_speed WHERE id = :id ")
 	Integer getProcessorSpeed(Integer id);
+
+	// пробую записывать сколько процессоры раз трогали строчку
+	@Modifying
+	@Query("UPDATE public.tasks SET counter = :counter WHERE id = :id ")
+	Integer updateTasksCounterProcessor(String id, Integer counter);
+
+	@Query("SELECT counter FROM public.tasks WHERE id = :id ")
+	Integer getTasksCounterProcessor(String id);
 }

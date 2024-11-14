@@ -2,6 +2,7 @@ package org.ysikorsky.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.ysikorsky.controller.*;
 
 
@@ -36,7 +37,7 @@ public class TaskService {
 //			taskStorage.updateTaskDone(storageTask);
 //		}
 //	}
-
+ 	@Transactional
 	public void accomplishTask() {
 		List<StorageTask> firstCreatedTasks = taskStorage.firstCreatedTask();
 		//System.out.println(firstCreatedTasks.toString() + "!!!!!!!!!!!!!!!!!!!!!!!");
@@ -48,11 +49,11 @@ public class TaskService {
 		for (StorageTask storageTask : firstCreatedTasks) {
 			int number = storageTask.getNumber();
 			storageTask.setState(StorageTaskState.IN_PROGRESS);
-
-			taskStorage.updateTaskInProgress(storageTask);
+			taskStorage.updateTaskInProgress(storageTask); // todo тут засунуть отслеживание сколько строку брали раз?
 
 			int calculate = calculate(number);
 			storageTask.setAnswer(calculate);
+
 			storageTask.setState(StorageTaskState.DONE);
 			storageTask.setLocalDateTimeDone(LocalDateTime.now());
 
