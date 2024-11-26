@@ -54,4 +54,10 @@ public class AppController {
 		return appService.setDefaultProcessorSpeed();
 	}
 
+	//____________________________ TESTS
+
+	public void truncateProcessorSpeed() {
+		appService.truncateProcessorSpeed();
+	}
+
 }

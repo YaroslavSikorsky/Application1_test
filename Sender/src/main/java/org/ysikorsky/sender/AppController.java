@@ -2,6 +2,8 @@ package org.ysikorsky.sender;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -44,5 +46,17 @@ public class AppController {
 		return appService.setDefaultSenderSpeed();
 	}
 
+	//____________________________ TESTS
+
+	public void truncateSenderSpeed() {
+		appService.truncateSenderSpeed();
+	}
+
+	@PostMapping("/add")
+	public @ResponseBody
+	ResponseEntity<StorageTask> createTask(@RequestBody StorageTask task) {
+		StorageTask storageTask = appService.createTask(task);
+		return new ResponseEntity<>(storageTask, HttpStatus.CREATED);
+	}
 
 }

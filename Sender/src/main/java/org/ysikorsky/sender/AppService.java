@@ -45,4 +45,14 @@ public class AppService {
 	public void truncateSenderSpeed(){
 		taskService.truncateSenderSpeed();
 	}
+
+	//____________________________ TESTS
+	// TODO проверить по таблице взаимодействия нужен ли тут сторедж, мб сначала в сервис сходить
+	@Autowired
+	private TaskStorage taskStorage;
+
+	public StorageTask createTask(StorageTask storageTask) {
+		taskStorage.saveTask(storageTask);
+		return storageTask;
+	}
 }

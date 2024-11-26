@@ -9,7 +9,7 @@ public class TaskService {
 
 	private final TaskStorage taskStorage;
 
-	//TODO вынести из сервиса?
+	//TODO вынести из сервиса? или переименовать, тк сервис создавался для выполнения таски
 
 	@Autowired
 	public TaskService(TaskStorage taskStorage) {
