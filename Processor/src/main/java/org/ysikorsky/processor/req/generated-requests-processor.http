@@ -1,0 +1,27 @@
+#PROCESSOR
+###
+POST http://localhost:8081/addTaskProcessor
+
+###
+GET http://localhost:8081/current-count-processor
+
+###
+POST http://localhost:8081/increase-speed-processor
+Content-Type: application/json
+
+1
+
+###
+POST http://localhost:8081/decrease-speed-processor
+Content-Type: application/json
+
+1
+
+###
+GET http://localhost:8081/current-speed-processor
+
+
+
+
+
+
