@@ -1,4 +1,4 @@
-package org.ysikorsky.processor;
+package org.ysikorsky.logger;
 
 public enum ProcessorTaskState {
 	CREATED,

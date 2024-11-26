@@ -19,6 +19,7 @@
     <modules>
         <module>Sender</module>
         <module>Processor</module>
+        <module>Logger</module>
     </modules>
 
 

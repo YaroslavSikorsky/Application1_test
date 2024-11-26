@@ -1,5 +1,4 @@
-package org.ysikorsky.processor;
-
+package org.ysikorsky.logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -7,7 +6,6 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 @Component
@@ -17,9 +15,9 @@ public class LoggerThread extends Thread {
 	private TaskStorage taskStorage;
 
 	private static final Logger logger = Logger.getLogger(LoggerThread.class.getName());
-	private static final Map<String, String> taskStateMap = new ConcurrentHashMap<>();
+	private static final Map<String, String> taskStateMap = new HashMap<>();
 
-	//todo как правильно логгер должен работать, в предыдущей версии мог брать и проверять изменения, а отдельно на процессоре нет
+	//TODO как правильно логгер должен работать?
 	@Override
 	public void run() {
 		while (true) {

@@ -1,4 +1,4 @@
-package org.ysikorsky.processor;
+package org.ysikorsky.logger;
 
 
 import java.time.LocalDateTime;
@@ -63,14 +63,7 @@ public class ProcessorTask {
 		this.id = id;
 	}
 
-	public int getAnswer() {
-
-		return answer;
-
-	}
-
 	public void setAnswer(int answer) {
-
 		this.answer = answer;
 
 	}

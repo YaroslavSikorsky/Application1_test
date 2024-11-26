@@ -1,8 +1,7 @@
-package org.ysikorsky.processor;
+package org.ysikorsky.logger;
 
 
 import org.springframework.data.annotation.Id;
-
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
@@ -27,10 +26,6 @@ public class StorageTask {
 		this.version = 0;
 	}
 
-	public int getVersion() {
-		return version;
-	}
-
 	@Override
 	public String toString() {
 		return "StorageTask{" +
@@ -47,47 +42,24 @@ public class StorageTask {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	public int getNumber() {
 		return number;
-	}
-
-	public void setNumber(int number) {
-		this.number = number;
 	}
 
 	public StorageTaskState getState() {
 		return state;
 	}
 
-	public void setState(StorageTaskState state) {
-		this.state = state;
-	}
-
 	public int getAnswer() {
 		return answer;
-	}
-
-	public void setAnswer(int answer) {
-		this.answer = answer;
 	}
 
 	public LocalDateTime getLocalDateTimeCreated() {
 		return localDateTimeCreated;
 	}
 
-	public void setLocalDateTimeCreated(LocalDateTime localDateTimeCreated) {
-		this.localDateTimeCreated = localDateTimeCreated;
-	}
-
 	public LocalDateTime getLocalDateTimeDone() {
 		return localDateTimeDone;
 	}
 
-	public void setLocalDateTimeDone(LocalDateTime localDateTimeDone) {
-		this.localDateTimeDone = localDateTimeDone;
-	}
 }

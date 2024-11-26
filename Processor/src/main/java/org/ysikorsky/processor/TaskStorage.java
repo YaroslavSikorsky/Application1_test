@@ -2,13 +2,10 @@ package org.ysikorsky.processor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 
 
@@ -26,18 +23,6 @@ public class TaskStorage {
 
 	public List<StorageTask> firstCreatedTask() {
 		return storageTaskRepository.firstCreatedTask();
-	}
-
-	// todo метод для логгера, аннотацию убрать?
-	//@Transactional(readOnly = true, isolation = Isolation.READ_UNCOMMITTED)
-	public List<StorageTask> findAll() {
-		Iterable<StorageTask> iterable = storageTaskRepository.findAll();
-		Iterator<StorageTask> iterator = iterable.iterator();
-		List<StorageTask> list = new ArrayList<>();
-		while (iterator.hasNext()) {
-			list.add(iterator.next());
-		}
-		return list;
 	}
 
 	public void updateTaskInProgress(StorageTask storageTask) {

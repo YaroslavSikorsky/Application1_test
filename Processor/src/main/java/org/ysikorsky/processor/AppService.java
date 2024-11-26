@@ -1,6 +1,5 @@
 package org.ysikorsky.processor;
 
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +9,6 @@ public class AppService {
 
 	@Autowired
 	private Processor processor;
-
-	@Autowired
-	private LoggerThread loggerThread;
 
 	@Autowired
 	private TaskService taskService;
@@ -51,13 +47,6 @@ public class AppService {
 
 	public void truncateProcessorSpeed() {
 		taskService.truncateProcessorSpeed();
-	}
-
-	//____________________________ LOGGER
-
-	@PostConstruct
-	public void init() {
-		loggerThread.start();
 	}
 
 }

@@ -1,4 +1,4 @@
-package org.ysikorsky.processor;
+package org.ysikorsky.logger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

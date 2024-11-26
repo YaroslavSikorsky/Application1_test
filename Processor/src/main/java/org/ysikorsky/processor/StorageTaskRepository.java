@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Optional;
+
 
 @Repository
 public interface StorageTaskRepository extends CrudRepository<StorageTask, Integer> {
@@ -28,9 +28,6 @@ public interface StorageTaskRepository extends CrudRepository<StorageTask, Integ
 
 	@Query("SELECT * FROM public.tasks WHERE state = 'CREATED' ORDER BY local_date_time_created ASC LIMIT 10")
 	List<StorageTask> firstCreatedTask();
-
-	@Query("SELECT * FROM public.tasks ORDER BY local_date_time_created ASC")
-	Iterable<StorageTask> findAll();
 
 	//____________________________ PROCESSOR_SPEED TABLE
 
